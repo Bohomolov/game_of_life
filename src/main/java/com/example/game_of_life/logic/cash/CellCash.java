@@ -14,20 +14,20 @@ public class CellCash {
     }
 
     public void addToCash(Cell cell) {
-        cache.add(cell);
+        this.cache.add(cell);
     }
 
     public List<Cell> getAllCells() {
-        return new ArrayList<>(cache);
+        return new ArrayList<>(this.cache);
     }
 
     public int getNumberAliveNeighbors(int[] indexes) {
         int numberAliveCells = 0;
         for (int i : indexes) {
-            if (i < 0 || i > size - 1) {
+            if (i < 0 || i > this.size - 1) {
                 continue;
             }
-            Cell cell = cache.get(i);
+            Cell cell = this.cache.get(i);
             if (cell.isAlive()) {
                 numberAliveCells += 1;
             }

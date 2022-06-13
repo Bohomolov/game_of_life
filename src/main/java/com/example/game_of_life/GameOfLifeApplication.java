@@ -1,11 +1,11 @@
 package com.example.game_of_life;
 
-import com.example.game_of_life.view.BoardImpl;
+import com.example.game_of_life.view.Board;
 
 public class GameOfLifeApplication {
 
     public static void main(String[] args) {
-        BoardImpl f = new BoardImpl(10000);
+        new Board(10000);
     }
 
 }

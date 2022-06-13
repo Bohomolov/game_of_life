@@ -1,53 +1,44 @@
 package com.example.game_of_life.view;
 
-import com.example.game_of_life.logic.enums.CellType;
 import javax.swing.*;
 import java.awt.*;
 
 public class Cell extends JButton {
+    private static final Color ALIVE_COLOR = Color.GREEN;
+    private static final Color DEAD_COLOR = Color.BLACK;
     private final int index;
-    private final Color aliveColor = Color.GREEN;
-    private final Color deadColor = Color.BLACK;
-
-    public int[] getNeighborsIndexes() {
-        return neighborsIndexes;
-    }
-
     private final int[] neighborsIndexes;
-
-    public int getIndex() {
-        return index;
-    }
-
-    public boolean isAlive() {
-        return isAlive;
-    }
-
     private boolean isAlive;
 
     public Cell(int index, int[] neighborsIndexes, boolean isAlive) {
         this.index = index;
         this.neighborsIndexes = neighborsIndexes;
-        this.isAlive = isAlive;
-        this.changeColor();
+        this.changeStatus(isAlive);
         this.setVisible(true);
     }
 
-
     public void changeStatus(boolean status) {
         this.isAlive = status;
-        changeColor();
+        this.setBackground(this.isAlive ? ALIVE_COLOR : DEAD_COLOR);
     }
 
-    private void changeColor() {
-        this.setBackground(isAlive ? aliveColor : deadColor);
+    public boolean isAlive() {
+        return this.isAlive;
+    }
+
+    public int getIndex() {
+        return this.index;
+    }
+
+    public int[] getNeighborsIndexes() {
+        return this.neighborsIndexes;
     }
 
     @Override
     public String toString() {
         return "Cell{" +
-                "index=" + index +
-                "isAlive=" + isAlive +
+                "index=" + this.index +
+                "isAlive=" + this.isAlive +
                 '}';
     }
 }
